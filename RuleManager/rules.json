@@ -1,0 +1,34 @@
+[
+  {
+    "group_predicate": "ALL",
+    "rules": [
+      {
+        "field": "sender",
+        "predicate": "contains",
+        "value": "linkedin"
+      },
+      {
+        "field": "subject",
+        "predicate": "does_not_contain",
+        "value": "invitation"
+      }
+    ],
+    "actions": ["mark_as_read", "move:Linkedin"]
+  },
+  {
+    "group_predicate": "ANY",
+    "rules": [
+      {
+        "field": "subject",
+        "predicate": "contains",
+        "value": "Job"
+      },
+      {
+        "field": "received_at",
+        "predicate": "older_than_x_days",
+        "value": "1"
+      }
+    ],
+    "actions": ["mark_as_unread", "move:JobOrOld"]
+  }
+]
